@@ -1,0 +1,15 @@
+FROM node:slim
+
+#Install
+WORKDIR /usr/src/app
+COPY package.json package-lock.json ./
+RUN npm install 
+
+#Build
+COPY . .
+RUN npm run build
+
+EXPOSE 3002
+
+#Run
+CMD [ "npm", "start" ]
